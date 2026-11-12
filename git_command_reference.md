@@ -156,3 +156,35 @@ git restore --staged progress_tracker.md
 **Real-world Scenario:** After `git add .` you notice `.env` was staged; you unstage it before committing.
 **Common Mistakes:** Leaving out `--staged`. `git restore <file>` alone DISCARDS your edits (destructive).
 **Related Commands:** `git add`, `git status`, `git reset`
+
+---
+
+## git restore (without --staged)  [DESTRUCTIVE]
+
+**Command:**
+```bash
+git restore config.txt
+```
+**Purpose:** Discards your uncommitted edits in a file, restoring it to the last commit.
+**Why do we need it?** To throw away an experiment that went wrong.
+**Syntax:** `git restore <file>`
+**Expected Output:** None. The file reverts.
+**Real-world Scenario:** You changed hyperparameters, they were bad, you reset the file.
+**Common Mistakes:** Running it on a file with edits you wanted. Uncommitted edits cannot be recovered. Check `git diff` first.
+**Related Commands:** `git diff`, `git restore --staged`, `git stash`
+
+---
+
+## git reset
+
+**Command:**
+```bash
+git reset --soft HEAD~1
+```
+**Purpose:** Moves the branch back to an earlier commit. `--soft` keeps changes staged, default (mixed) keeps them unstaged, `--hard` DISCARDS them.
+**Why do we need it?** To undo or redo a commit made too early or with a bad message.
+**Syntax:** `git reset [--soft|--mixed|--hard] <commit>`
+**Expected Output:** `--soft`/mixed: none. `--hard`: `HEAD is now at <hash> <message>`
+**Real-world Scenario:** You committed too soon; reset --soft, add more, recommit.
+**Common Mistakes:** `--hard` loses uncommitted work. Never reset commits you already pushed and shared.
+**Related Commands:** `git revert` (safe undo for shared commits), `git reflog`
