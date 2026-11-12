@@ -33,11 +33,23 @@ git status -s
 git restore --staged README.md
 git status -s
 ```
-`-am` = `-a` (stage all modified tracked files) + `-m` (message). It does not include untracked files.
+### Side note: `git commit -a` and `-am` (a trap we hit in this exercise)
 
-Expected: the "Temp commit" disappears from the log, `README.md` shows `M ` after reset --soft, then ` M` after unstaging.
+- `-a` = stage **every modified tracked file**, then commit. It skips `git add`.
+- `-m` = commit message. `-am` combines the two: `git commit -am "message"`.
+- Tracked = Git already knows the file. `-a` never includes **untracked** (new) files.
+- The trap: `-a` commits ALL modified tracked files, not just the one you were thinking about. In this exercise, `commit -am` also swept in `git_command_reference.md` and `progress_tracker.md`, not just `README.md`.
+- Safer habit: `git status -s`, then `git add <file>` for each file you want, then `git commit -m "..."`. Use `-a` only when you've checked that every modified file belongs in the commit.
 
-Then undo your temp line safely. Tell me the output of the above first and I will guide the cleanup (it needs `git restore README.md`, which is destructive, so we do it together).
+### What actually happened in the exercise
+
+1. `commit -am` committed 3 files (README + the two notes), not 1.
+2. `reset --soft HEAD~1` undid the commit but kept all 3 files **staged** (`M `).
+3. That is why the two notes files showed `M ` and not just README.
+
+Expected (corrected): the "Temp commit" disappears from the log. After `reset --soft`, all changed files stay staged. `restore --staged` only unstages the file you name.
+
+The temporary README line is then removed with `git restore README.md` (destructive: it discards uncommitted edits, so check `git diff README.md` first).
 
 Questions:
 1. What is the difference between `reset --soft` and `reset --hard`?

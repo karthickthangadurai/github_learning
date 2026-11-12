@@ -188,3 +188,20 @@ git reset --soft HEAD~1
 **Real-world Scenario:** You committed too soon; reset --soft, add more, recommit.
 **Common Mistakes:** `--hard` loses uncommitted work. Never reset commits you already pushed and shared.
 **Related Commands:** `git revert` (safe undo for shared commits), `git reflog`
+
+---
+
+## git commit -a / -am
+
+**Command:**
+```bash
+git commit -am "Fix typo"
+```
+**Purpose:** Stages all modified tracked files and commits them in one step (`-a` = all tracked changes, `-m` = message).
+**Why do we need it?** A shortcut when every modified file belongs in the commit.
+**Syntax:** `git commit -a -m "<message>"` or `git commit -am "<message>"`
+**Example:** `git commit -am "Fix typo"`
+**Expected Output:** `[main <hash>] Fix typo` and a file count.
+**Real-world Scenario:** A quick one-file fix where you know nothing else changed.
+**Common Mistakes:** It commits EVERY modified tracked file, including ones you did not mean to include. It skips untracked (new) files. Check `git status -s` first.
+**Related Commands:** `git add`, `git status`, `git reset --soft HEAD~1` (to undo)
