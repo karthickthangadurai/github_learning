@@ -121,3 +121,38 @@ git log
 **Real-world Scenario:** Accuracy dropped; you scan recent commits to find which change caused it.
 **Common Mistakes:** Getting stuck in the pager on long logs. Press `q` to quit.
 **Related Commands:** `git diff`, `git show`, `git reflog`
+
+---
+
+## git diff
+
+**Command:**
+```bash
+git diff
+git diff --staged
+```
+**Purpose:** Shows line-by-line what changed. Plain `git diff` shows unstaged changes; `--staged` shows staged changes.
+**Why do we need it?** To review your own changes before committing and avoid committing mistakes or secrets.
+**Syntax:** `git diff [--staged] [<file>]`
+**Example:** `git diff prompt.txt`
+**Expected Output:** Lines starting with `-` (removed) and `+` (added), with `@@` hunk headers.
+**Real-world Scenario:** Before committing a prompt change, you check exactly which lines moved.
+**Common Mistakes:** Running `git diff` after `git add` and seeing nothing. Use `--staged` then.
+**Related Commands:** `git status`, `git add`, `git log -p`
+
+---
+
+## git restore --staged
+
+**Command:**
+```bash
+git restore --staged progress_tracker.md
+```
+**Purpose:** Unstages a file. It goes back to the working directory with your edits intact.
+**Why do we need it?** You staged a file by mistake and want it out of the next commit.
+**Syntax:** `git restore --staged <file>`
+**Example:** `git restore --staged progress_tracker.md`
+**Expected Output:** None. `git status` shows the file as modified, not staged.
+**Real-world Scenario:** After `git add .` you notice `.env` was staged; you unstage it before committing.
+**Common Mistakes:** Leaving out `--staged`. `git restore <file>` alone DISCARDS your edits (destructive).
+**Related Commands:** `git add`, `git status`, `git reset`
