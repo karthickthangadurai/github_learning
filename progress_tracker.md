@@ -20,7 +20,7 @@
 - [x] Lesson 5: Undoing mistakes (done; answers on soft vs hard pending)
 - [x] Lesson 6: Connecting to GitHub (done by you: repo created, pushed)
 - [x] Lesson 7: push, fetch, pull (done)
-- [ ] Lesson 8: .gitignore (next)
+- [ ] Lesson 8: .gitignore (notes written, exercise in progress)
 
 ## Commands learned
 `git --version`, `git config`, `git init`, `git status`, `git add`, `git commit`, `git log`, `git log --oneline`, `git diff`, `git diff --staged`, `git restore --staged`, `git reset`, `git remote`, `git push`, `git fetch`, `git pull`

@@ -327,3 +327,20 @@ git pull
 **Real-world Scenario:** Start of every work session.
 **Common Mistakes:** Pulling with uncommitted edits that touch the same files (commit or stash first); unexpected merge conflicts.
 **Related Commands:** `git fetch`, `git merge`, `git status -sb`
+
+---
+
+## git check-ignore
+
+**Command:**
+```bash
+git check-ignore -v .env
+```
+**Purpose:** Tells you whether a file is ignored and which `.gitignore` rule is responsible.
+**Why do we need it?** To debug why a file does not show up in `git status`, or why one you expected to be ignored still does.
+**Syntax:** `git check-ignore [-v] <path>`
+**Example:** `git check-ignore -v .env`
+**Expected Output:** `.gitignore:1:.env	.env` (file:line:pattern, then the path). No output = not ignored.
+**Real-world Scenario:** A teammate says "my new config file isn't being committed"; you find the rule hiding it.
+**Common Mistakes:** Expecting `.gitignore` to ignore an already-tracked file. Fix with `git rm --cached <file>`.
+**Related Commands:** `git status -s`, `git rm --cached`
