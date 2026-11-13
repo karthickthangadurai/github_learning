@@ -18,3 +18,41 @@
 ## Exercise 7 answers to check yourself
 1. fetch only downloads; pull downloads and merges into your branch.
 2. ahead = local commits not pushed; behind = remote commits not pulled.
+
+## Commands used (in order)
+
+### Part A: push a new commit
+```bash
+git add lessons/lesson_06_github_remote.md
+git commit -m "Add lesson 6 notes"
+git status -sb          # before push: ## main...origin/main [ahead 1]
+git push
+git status -sb          # after push:  ## main...origin/main
+```
+`-sb` = `-s` (short) + `-b` (show branch and ahead/behind info).
+
+### Part B: simulate a teammate's change
+1. On github.com, open `README.md`, click the pencil icon, add a line, commit it.
+2. In the terminal:
+```bash
+git status -sb          # still looks in sync: Git hasn't looked at GitHub yet
+git fetch               # download the new commit, files unchanged
+git status -sb          # now: ## main...origin/main [behind 1]
+git log --oneline origin/main     # see the remote's commits
+git diff HEAD origin/main         # see what is different
+git pull                # fetch + merge: files updated (Fast-forward)
+git status -sb          # back to ## main...origin/main
+cat README.md           # shows the line you added on GitHub
+```
+
+## Expected output highlights
+- fetch: `f43bbbc..1d5c4bd  main -> origin/main`
+- pull: `Fast-forward` and `README.md | 1 +`
+
+## Common mistakes
+- Expecting `git fetch` to change your files. It doesn't.
+- Pulling with uncommitted edits to the same files. Commit or stash first.
+- Fixing a typo in a pushed commit message by rewriting history. Don't, on shared branches.
+
+## Recap
+`push` uploads, `fetch` downloads safely, `pull` = fetch + merge. `[ahead]` = push needed, `[behind]` = pull needed.
