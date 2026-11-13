@@ -205,3 +205,59 @@ git commit -am "Fix typo"
 **Real-world Scenario:** A quick one-file fix where you know nothing else changed.
 **Common Mistakes:** It commits EVERY modified tracked file, including ones you did not mean to include. It skips untracked (new) files. Check `git status -s` first.
 **Related Commands:** `git add`, `git status`, `git reset --soft HEAD~1` (to undo)
+
+---
+
+# Flags Cheat Sheet
+
+A **flag** (also called an option) changes how a command behaves. Conventions:
+- **Short flag**: one dash, one letter (`-m`). Short flags can be combined: `-am` = `-a -m`.
+- **Long flag**: two dashes, a word (`--staged`).
+- Many flags take a value right after them: `-m "message"`, `-b main`.
+- Many have both forms; they do the same thing (`-s` = `--short`).
+
+## Flags used so far
+
+| Flag | Used with | Meaning | Example |
+|---|---|---|---|
+| `-m "msg"` | `git commit` | Message for the commit, written inline. Without it Git opens an editor. | `git commit -m "Add README"` |
+| `-a` | `git commit` | Stage all modified **tracked** files first. Skips untracked files. Commits everything modified, so check first. | `git commit -a -m "Fix"` |
+| `-am "msg"` | `git commit` | `-a` and `-m` combined. | `git commit -am "Fix typo"` |
+| `-b <name>` | `git init` | Name of the first branch. Without it Git uses its default (often `master`). | `git init -b main` |
+| `-s` / `--short` | `git status` | Compact two-column output. First column = staged, second = unstaged. | `git status -s` |
+| `--oneline` | `git log` | One line per commit: short hash and message. | `git log --oneline` |
+| `--staged` (also `--cached`) | `git diff` | Show changes that are staged (what the next commit contains). | `git diff --staged` |
+| `--staged` | `git restore` | Unstage a file; keep your edits. Without it `restore` DISCARDS edits. | `git restore --staged file.md` |
+| `--stat` | `git diff`, `git show` | Summary of files changed and line counts, not the full diff. | `git diff --staged --stat` |
+| `--soft` | `git reset` | Undo commits, keep changes **staged**. Safe. | `git reset --soft HEAD~1` |
+| `--mixed` (default) | `git reset` | Undo commits, keep changes **unstaged**. Safe. | `git reset HEAD~1` |
+| `--hard` | `git reset` | Undo commits AND discard changes. DESTRUCTIVE. | `git reset --hard HEAD~1` |
+| `--global` | `git config` | Apply the setting to all repos for your user. | `git config --global user.name "Name"` |
+| `--local` | `git config` | Apply the setting only to the current repo. (default) | `git config --local user.email "x@y.com"` |
+| `--version` | `git` | Print the installed Git version. | `git --version` |
+
+## `-b` has different meanings in different commands
+
+- `git init -b main` = name the initial branch `main`.
+- Later (branching lessons): `git checkout -b feature-x` = create a new branch and switch to it. The modern equivalent is `git switch -c feature-x` (`-c` = create).
+- Don't assume a flag means the same thing everywhere. Check `git <command> --help`.
+
+## Flags coming in later lessons (preview)
+
+| Flag | Command | Meaning |
+|---|---|---|
+| `-u` / `--set-upstream` | `git push` | Link your local branch to a remote branch (first push) |
+| `-d` / `-D` | `git branch` | Delete a branch (`-D` force-deletes unmerged) |
+| `-p` | `git add`, `git log` | Patch mode: pick individual changes / show diffs in the log |
+| `--amend` | `git commit` | Rewrite the last commit |
+| `--no-ff` | `git merge` | Always create a merge commit |
+| `--force-with-lease` | `git push` | Safer forced push |
+| `-n <count>` / `-<count>` | `git log` | Limit to the last N commits (`git log -3`) |
+| `--graph` | `git log` | Draw the branch structure in text |
+
+## Tip: help is built in
+
+```bash
+git commit --help      # full manual in your pager (q to quit)
+git commit -h          # short usage summary in the terminal
+```
