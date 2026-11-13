@@ -50,3 +50,15 @@ Paste the output of the last `git log --oneline` and the `git status -s` outputs
 Questions:
 1. What does the first column vs the second column of `git status -s` mean?
 2. Did `git restore --staged` delete your edit to `progress_tracker.md`?
+
+## Commands explained
+
+| Command | What it does | Why you run it |
+|---|---|---|
+| `git status -s` | Short status. Column 1 = staged, column 2 = unstaged. `??` = untracked, ` M` = modified, `M ` = staged, `A ` = new and staged | Compact view of what is where |
+| `git add lessons/lesson_03_git_diff.md` | Stages just that file | Commit one logical change alone |
+| `git commit -m "Add lesson 3 notes"` | Commits only what is staged | Other modified files stay uncommitted |
+| `git add a.md b.md` | Stages several named files at once | Group related files |
+| `git restore --staged progress_tracker.md` | Unstages the file; your edits stay | Undo an accidental `git add` |
+| `git add progress_tracker.md` | Stages it again | Finish the second commit |
+| `git log --oneline` | Short history | Confirm two focused commits |

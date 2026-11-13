@@ -344,3 +344,37 @@ git check-ignore -v .env
 **Real-world Scenario:** A teammate says "my new config file isn't being committed"; you find the rule hiding it.
 **Common Mistakes:** Expecting `.gitignore` to ignore an already-tracked file. Fix with `git rm --cached <file>`.
 **Related Commands:** `git status -s`, `git rm --cached`
+
+---
+
+## git branch
+
+**Command:**
+```bash
+git branch
+git branch feature-x
+```
+**Purpose:** Lists branches (no argument) or creates a new one (with a name). `*` marks the current branch.
+**Why do we need it?** Branches isolate work so `main` stays stable.
+**Syntax:** `git branch [<name>]`, `git branch -d <name>` (delete merged), `git branch -m <new>` (rename)
+**Expected Output:** `* main` / `  feature-x`
+**Real-world Scenario:** Checking which branch you're on before committing.
+**Common Mistakes:** Creating a branch but forgetting to switch to it, then committing on `main`.
+**Related Commands:** `git switch`, `git merge`
+
+---
+
+## git switch
+
+**Command:**
+```bash
+git switch feature-x
+git switch -c feature-x
+```
+**Purpose:** Moves you to another branch; with `-c`, creates it first. Your files change to match the branch.
+**Why do we need it?** To move between tasks safely.
+**Syntax:** `git switch <branch>`, `git switch -c <new-branch>`, `git switch -` (previous branch)
+**Expected Output:** `Switched to a new branch 'feature-x'`
+**Real-world Scenario:** Starting every new task: `git switch main`, `git pull`, `git switch -c my-task`.
+**Common Mistakes:** Switching with uncommitted edits that conflict ("would be overwritten"). Commit or stash first.
+**Related Commands:** `git checkout` (older), `git branch`, `git stash`

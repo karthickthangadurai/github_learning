@@ -82,3 +82,18 @@ models/
 *.ckpt
 .DS_Store
 ```
+
+## Commands explained
+
+| Command | What it does | Why you run it |
+|---|---|---|
+| `echo 'API_KEY=fake-not-real' > .env` | Creates a `.env` file with a FAKE key | Safe stand-in for a real secret |
+| `mkdir venv && echo x > venv/lib.py` | Creates a folder and a file in it. `&&` = run the second command only if the first succeeded | Stand-in for a virtual environment |
+| `git status -s` | Short status | Before: `.env` and `venv/` show as `??` |
+| `printf '.env\nvenv/\n...' > .gitignore` | Writes the ignore rules, one per line (`\n` = newline) | Create the ignore file |
+| `git status -s` (again) | `.env` and `venv/` no longer appear | The rules work |
+| `git check-ignore -v .env` | Prints which rule ignores the file (`file:line:pattern path`); no output = not ignored | Debug ignore rules |
+| `git add .gitignore` | Stages only the ignore file | Avoid staging anything else |
+| `git commit -m "Add .gitignore"` | Commits it | Share the rules with the repo |
+| `git push` | Uploads the commit | Publish to GitHub |
+| `git rm --cached <file>` | Stops tracking a file but keeps it on disk | Fix a file committed by mistake |

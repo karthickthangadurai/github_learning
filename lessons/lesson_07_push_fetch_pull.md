@@ -56,3 +56,16 @@ cat README.md           # shows the line you added on GitHub
 
 ## Recap
 `push` uploads, `fetch` downloads safely, `pull` = fetch + merge. `[ahead]` = push needed, `[behind]` = pull needed.
+
+## Commands explained
+
+| Command | What it does | Why you run it |
+|---|---|---|
+| `git add <file>` / `git commit -m "..."` | Stage and commit | Create the commit to push |
+| `git status -sb` | Short status plus `ahead`/`behind` counts | See whether push or pull is needed |
+| `git push` | Uploads local commits to GitHub | Share your commit |
+| `git fetch` | Downloads new remote commits into `origin/main`. Your files are unchanged | See remote changes safely |
+| `git log --oneline origin/main` | History of the remote-tracking branch | See what the remote has |
+| `git diff HEAD origin/main` | Differences between your branch and the remote | Preview what a pull will change |
+| `git pull` | `fetch` + merge into your branch | Bring your files up to date |
+| `cat README.md` | Prints the file | Check the pulled change arrived |

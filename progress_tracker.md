@@ -5,8 +5,8 @@
 ## Phases
 - [ ] Phase 1: Git Fundamentals  ← mostly done
 - [ ] Phase 2: Daily Git Commands  ← in progress (Lesson 4)
-- [ ] Phase 3: GitHub Fundamentals
-- [ ] Phase 4: Branching and Merging
+- [x] Phase 3: GitHub Fundamentals (mostly done; SSH vs HTTPS later)
+- [ ] Phase 4: Branching and Merging  ← in progress (Lesson 9)
 - [ ] Phase 5: Professional Developer Workflow
 - [ ] Phase 6: Advanced Git
 - [ ] Phase 7: GitHub for AI Engineers
@@ -20,7 +20,8 @@
 - [x] Lesson 5: Undoing mistakes (done; answers on soft vs hard pending)
 - [x] Lesson 6: Connecting to GitHub (done by you: repo created, pushed)
 - [x] Lesson 7: push, fetch, pull (done)
-- [ ] Lesson 8: .gitignore (notes written, exercise in progress)
+- [x] Lesson 8: .gitignore (done, commits d89ba03, fb97e1f)
+- [ ] Lesson 9: Branches (exercise pending)
 
 ## Commands learned
 `git --version`, `git config`, `git init`, `git status`, `git add`, `git commit`, `git log`, `git log --oneline`, `git diff`, `git diff --staged`, `git restore --staged`, `git reset`, `git remote`, `git push`, `git fetch`, `git pull`

@@ -40,3 +40,16 @@ New syntax: `git log --oneline` is a short version of `git log` that shows one l
 ## Recap
 
 `init` → create file → `status` (untracked) → `add` (staged) → `commit` (saved) → `log`.
+
+## Commands explained
+
+| Command | What it does | Why you run it |
+|---|---|---|
+| `git init -b main` | Creates a hidden `.git` folder, turning the folder into a repo. `-b main` names the first branch | Start tracking a project |
+| `git status` | Shows untracked, modified and staged files and the current branch | Check state before and after every step |
+| `git add <file>` | Moves a file's changes into the staging area | Choose what goes into the next commit |
+| `git commit -m "msg"` | Saves the staged snapshot permanently. `-m` = message inline | Create a history entry |
+| `git log` | Lists commits, newest first (press `q` to quit) | See history |
+| `git log --oneline` | Same, one short line per commit | Quick overview |
+| `mkdir -p <path>` | Creates a folder (and parents). `-p` = no error if it exists | Make the practice folder |
+| `echo "text" > file` | Writes text into a file (overwrites). `>>` appends | Create a quick sample file |

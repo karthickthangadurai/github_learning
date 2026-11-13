@@ -54,3 +54,15 @@ The temporary README line is then removed with `git restore README.md` (destruct
 Questions:
 1. What is the difference between `reset --soft` and `reset --hard`?
 2. Why is `git restore README.md` dangerous but `git restore --staged README.md` is not?
+
+## Commands explained
+
+| Command | What it does | Why you run it |
+|---|---|---|
+| `git commit -am "Temp commit"` | Stages ALL modified tracked files and commits. `-a` = all tracked changes, `-m` = message | A quick commit to then undo (careful: commits more than one file) |
+| `git log --oneline` | Short history | See the commit before and after the reset |
+| `git reset --soft HEAD~1` | Moves the branch back one commit; changes stay staged. `HEAD~1` = one commit before now | Undo the last commit and keep the work |
+| `git status -s` | Short status | After reset, files show `M ` (staged) |
+| `git restore --staged README.md` | Unstages the file, edits stay | Move from staged to unstaged |
+| `git restore README.md` | DESTRUCTIVE: discards uncommitted edits in that file | Remove the temporary line (check `git diff` first) |
+| `git reset --hard HEAD~1` | DESTRUCTIVE: undo the commit AND discard all changes | Only in throwaway repos or when sure |

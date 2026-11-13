@@ -72,3 +72,12 @@ Also tell me which email your GitHub account uses. If it differs from your globa
 ## Commands introduced
 
 `git --version`, `git config` (see [git_command_reference.md](../git_command_reference.md))
+
+## Commands explained
+
+| Command | What it does | Why you run it |
+|---|---|---|
+| `git --version` | Prints the installed Git version | Confirms Git is installed and tells you which version |
+| `git config --global user.name` | Reads (no value given) the name Git stamps on your commits | Check your identity is set |
+| `git config --global user.email` | Reads the email Git stamps on your commits | Must match your GitHub email so commits link to your profile |
+| `git config --global user.name "Name"` | Sets (value given) the name. `--global` = for all your repos | One-time setup on a new machine |

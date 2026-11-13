@@ -40,3 +40,15 @@ You are using HTTPS via `gh`. We will compare SSH later.
 ## Exercise 6
 
 Answer the repo name and visibility first (see chat), then we run the steps together.
+
+## Commands explained
+
+| Command | What it does | Why you run it |
+|---|---|---|
+| `git remote add origin <url>` | Saves a nickname (`origin`) for the GitHub repo URL | Tell your local repo where GitHub is |
+| `git remote -v` | Lists remotes with their URLs (`-v` = verbose) | Verify the link |
+| `git push -u origin main` | Uploads `main` to `origin`. `-u` links your local `main` to `origin/main` | First push; later `git push` is enough |
+| `git push` | Uploads new local commits to the linked remote branch | Share or back up your work |
+| `git status -sb` | Short status plus branch line, e.g. `## main...origin/main` (`[ahead 1]` if unpushed) | Check sync with GitHub |
+| `git ls-files` | Lists files Git is tracking | Check what would be pushed |
+| `git log --stat` | History with files changed per commit | Review before publishing |
