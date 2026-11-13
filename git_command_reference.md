@@ -261,3 +261,69 @@ A **flag** (also called an option) changes how a command behaves. Conventions:
 git commit --help      # full manual in your pager (q to quit)
 git commit -h          # short usage summary in the terminal
 ```
+
+---
+
+## git remote
+
+**Command:**
+```bash
+git remote add origin https://github.com/<user>/<repo>.git
+git remote -v
+```
+**Purpose:** Manages links to remote repositories. `add` creates a nickname (`origin`) for a URL; `-v` lists them.
+**Why do we need it?** A local repo only syncs with GitHub if it knows where the remote is.
+**Syntax:** `git remote add <name> <url>`, `git remote -v`
+**Expected Output (`-v`):** `origin  <url> (fetch)` and `origin  <url> (push)`
+**Real-world Scenario:** You started a project locally and later created the GitHub repo.
+**Common Mistakes:** Wrong URL; adding `origin` twice ("remote origin already exists").
+**Related Commands:** `git push`, `git clone`
+
+---
+
+## git push
+
+**Command:**
+```bash
+git push -u origin main   # first time
+git push                  # afterwards
+```
+**Purpose:** Uploads your local commits to the remote branch.
+**Why do we need it?** Backup and sharing. Teammates can't see commits that exist only on your machine.
+**Syntax:** `git push [-u] [<remote> <branch>]`. `-u` links the local branch to the remote one.
+**Expected Output:** `main -> main` with object counts.
+**Real-world Scenario:** End of a work session or when a PR branch is ready for review.
+**Common Mistakes:** Rejected push when the remote is ahead (pull first). Never use `--force` on shared branches.
+**Related Commands:** `git pull`, `git status -sb`
+
+---
+
+## git fetch
+
+**Command:**
+```bash
+git fetch
+```
+**Purpose:** Downloads new commits from the remote into `origin/<branch>` without changing your files.
+**Why do we need it?** Safe way to see what changed remotely before merging.
+**Syntax:** `git fetch [<remote>]`
+**Expected Output:** `f43bbbc..1d5c4bd  main -> origin/main`
+**Real-world Scenario:** Checking whether a teammate pushed before you start your day.
+**Common Mistakes:** Thinking fetch updates your files. It doesn't; you still need merge or pull.
+**Related Commands:** `git pull`, `git diff HEAD origin/main`, `git log origin/main`
+
+---
+
+## git pull
+
+**Command:**
+```bash
+git pull
+```
+**Purpose:** `git fetch` plus merging the remote branch into your current branch.
+**Why do we need it?** Keeps your local branch up to date with teammates' work.
+**Syntax:** `git pull [<remote> <branch>]`
+**Expected Output:** `Fast-forward` and a file change summary.
+**Real-world Scenario:** Start of every work session.
+**Common Mistakes:** Pulling with uncommitted edits that touch the same files (commit or stash first); unexpected merge conflicts.
+**Related Commands:** `git fetch`, `git merge`, `git status -sb`

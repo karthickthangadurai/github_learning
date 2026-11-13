@@ -17,10 +17,13 @@
 - [x] Lesson 2: Your First Repository (done)
 - [x] Lesson 3: git diff (done, commit 9408ca3)
 - [x] Lesson 4: Selective staging (done, commits 85f8ceb, 0915324)
-- [ ] Lesson 5: Undoing mistakes (exercise pending)
+- [x] Lesson 5: Undoing mistakes (done; answers on soft vs hard pending)
+- [x] Lesson 6: Connecting to GitHub (done by you: repo created, pushed)
+- [x] Lesson 7: push, fetch, pull (done)
+- [ ] Lesson 8: .gitignore (next)
 
 ## Commands learned
-`git --version`, `git config`, `git init`, `git status`, `git add`, `git commit`, `git log`, `git log --oneline`, `git diff`, `git diff --staged`, `git restore --staged`
+`git --version`, `git config`, `git init`, `git status`, `git add`, `git commit`, `git log`, `git log --oneline`, `git diff`, `git diff --staged`, `git restore --staged`, `git reset`, `git remote`, `git push`, `git fetch`, `git pull`
 
 ## Exercises completed
 - Exercise 1: setup verified (answers pending)
