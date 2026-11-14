@@ -378,3 +378,37 @@ git switch -c feature-x
 **Real-world Scenario:** Starting every new task: `git switch main`, `git pull`, `git switch -c my-task`.
 **Common Mistakes:** Switching with uncommitted edits that conflict ("would be overwritten"). Commit or stash first.
 **Related Commands:** `git checkout` (older), `git branch`, `git stash`
+
+---
+
+## git merge
+
+**Command:**
+```bash
+git switch main
+git merge feature-x
+```
+**Purpose:** Brings another branch's commits into the branch you are on.
+**Why do we need it?** To combine finished work into `main`.
+**Syntax:** `git merge [--no-ff] [--no-edit] <branch>`, `git merge --abort` (cancel during conflicts)
+**Example:** `git merge add-usage-section`
+**Expected Output:** `Fast-forward` (pointer moved) or `Merge made by the 'ort' strategy` (merge commit).
+**Real-world Scenario:** Your feature is reviewed and approved, and goes into `main`.
+**Common Mistakes:** Merging in the wrong direction; merging with a stale `main`; ignoring conflicts.
+**Related Commands:** `git branch -d`, `git pull`, `git log --graph`
+
+---
+
+## git branch -d
+
+**Command:**
+```bash
+git branch -d add-usage-section
+```
+**Purpose:** Deletes a branch, but only if it is fully merged (safe). `-D` forces deletion (DESTRUCTIVE).
+**Why do we need it?** Remove finished branches so the list stays clean.
+**Syntax:** `git branch -d <name>`, `git branch --merged`
+**Expected Output:** `Deleted branch add-usage-section (was 20f956e).`
+**Real-world Scenario:** After a PR is merged, delete the feature branch locally and on GitHub.
+**Common Mistakes:** Using `-D` on an unmerged branch and losing its commits (recoverable via `git reflog`).
+**Related Commands:** `git merge`, `git push origin --delete <name>`

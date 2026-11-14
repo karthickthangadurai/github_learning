@@ -21,7 +21,8 @@
 - [x] Lesson 6: Connecting to GitHub (done by you: repo created, pushed)
 - [x] Lesson 7: push, fetch, pull (done)
 - [x] Lesson 8: .gitignore (done, commits d89ba03, fb97e1f)
-- [ ] Lesson 9: Branches (exercise pending)
+- [x] Lesson 9: Branches (done by you, commit 20f956e)
+- [ ] Lesson 10: Merging (exercise pending)
 
 ## Commands learned
 `git --version`, `git config`, `git init`, `git status`, `git add`, `git commit`, `git log`, `git log --oneline`, `git diff`, `git diff --staged`, `git restore --staged`, `git reset`, `git remote`, `git push`, `git fetch`, `git pull`
